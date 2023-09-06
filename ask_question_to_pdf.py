@@ -81,11 +81,13 @@ chunks = split_text(document)
 
 texte = "ou sont les ponts ?"
 
+
 def gpt3_completion(texte):
-    reponse=openai.ChatCompletion.create(
+    reponse = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", messages=[{"role": "user", "content": texte}]
     )
-    return reponse['choices'][0]['message']['content']
+    return reponse["choices"][0]["message"]["content"]
+
 
 def ask_question_to_pdf(question):
     return gpt3_completion(document + question)
