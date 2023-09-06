@@ -4,10 +4,8 @@ from flask import request
 import openai
 import sys
 
-sys.path.append(
-    "C:/ENPC/Projects/Hackaton Theodo/hackathon-ponts/src/utils/ask_question_to_pdf.py"
-)
-from ask_question_to_pdf import ask_question_to_pdf
+
+from ask_question_to_pdf import *
 
 app = Flask(__name__)
 
@@ -21,7 +19,7 @@ def hello(name=None):
 @app.route("/prompt", methods=["POST"])
 def promt():
     message = {}
-    message["answer"] = ask_question_to_pdf(request.form["prompt"])
+    message["answer"] = gpt3_completion(request.form["prompt"])
     return message
 
 
@@ -34,11 +32,13 @@ def question():
     return message
 
 
-# request.form["submit"] +
+
 
 
 @app.route("/answer", methods=["POST"])
 def answer():
     message = {}
-    message["answer"] = ask_question_to_pdf("est-ce que ma reponse est correcte?")
+    message["answer"] = ask_question_to_pdf("est-ce que ma reponse"+request.form["prompt"]+" est correcte?")
     return message
+
+
