@@ -1,11 +1,7 @@
-from flask import Flask
-from flask import render_template
-from flask import request
-import openai
-import sys
+from flask import Flask, request, render_template
 
 
-from ask_question_to_pdf import *
+from ask_question_to_pdf import gpt3_completion, ask_question_to_pdf
 
 app = Flask(__name__)
 
@@ -32,13 +28,10 @@ def question():
     return message
 
 
-#test
-
-
 @app.route("/answer", methods=["POST"])
 def answer():
     message = {}
-    message["answer"] = ask_question_to_pdf("est-ce que ma reponse"+request.form["prompt"]+" est correcte?")
+    message["answer"] = ask_question_to_pdf(
+        "est-ce que ma reponse" + request.form["prompt"] + " est correcte?"
+    )
     return message
-
-
