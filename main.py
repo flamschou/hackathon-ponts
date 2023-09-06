@@ -32,7 +32,7 @@ def question():
     return message
 
 
-# request.form["submit"] +
+# test
 
 
 @app.route("/answer", methods=["POST"])

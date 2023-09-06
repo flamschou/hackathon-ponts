@@ -79,8 +79,6 @@ filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
 document = read_pdf(filename)
 chunks = split_text(document)
 
-texte = "ou sont les ponts ?"
-
 
 def gpt3_completion(texte):
     reponse = openai.ChatCompletion.create(
@@ -89,5 +87,5 @@ def gpt3_completion(texte):
     return reponse["choices"][0]["message"]["content"]
 
 
-def ask_question_to_pdf(question):
+def ask_question_to_pdf(question, document=document):
     return gpt3_completion(document + question)
