@@ -11,6 +11,8 @@ const appendHumanMessage = (message) => {
   messagesContainer.appendChild(humanMessageElement);
 };
 
+#test
+
 const appendAIMessage = async (messagePromise) => {
   // Add a loader to the interface
   const loaderElement = document.createElement("div");
