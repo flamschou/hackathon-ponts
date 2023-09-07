@@ -32,13 +32,13 @@ def question():
     return message
 
 
-#test
+# test
 
 
 @app.route("/answer", methods=["POST"])
 def answer():
     message = {}
-    message["answer"] = ask_question_to_pdf("est-ce que ma reponse"+request.form["prompt"]+" est correcte?")
+    message["answer"] = ask_question_to_pdf(
+        "est-ce que ma reponse" + request.form["prompt"] + " est correcte?"
+    )
     return message
-
-
