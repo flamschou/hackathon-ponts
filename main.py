@@ -36,7 +36,7 @@ def question():
 def qcm():
     message = {}
     message["answer"] = ask_question_to_pdf(
-        "Construit un QCM de 10 questions sur le texte sur l'ENPC. Chaque question comportera 3 réponses fausses et une réponse vraie. Elles seront notées de A à D."
+        "Construit un QCM de 5 questions difficiles sur le texte. Chaque question comportera 3 réponses fausses et une réponse vraie. Elles seront notées de A à D. Il devra y avoir un saut de lignes après la question, et chaque réponse aura sa propre indentation."
     )
     return message
 
