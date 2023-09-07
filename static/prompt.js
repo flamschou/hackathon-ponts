@@ -12,6 +12,8 @@ const appendHumanMessage = (message) => {
   messagesContainer.appendChild(humanMessageElement);
 };
 
+#test
+
 const appendAIMessage = async (messagePromise) => {
   // Add a loader to the interface
   const loaderElement = document.createElement("div");
@@ -43,6 +45,14 @@ const handlePrompt = async (event) => {
     submitButton.innerHTML = "Message";
   }
 
+  else if (qcmButton.dataset.qcm !== undefined) {
+    url = "/answerQCM";
+    data.append("qcm", qcmButton.dataset.qcm);
+    delete qcmButton.dataset.qcm;
+    qcmButton.classList.remove("hidden");
+    submitButton.innerHTML = "Message";
+  }
+
   appendHumanMessage(data.get("prompt"));
 
   await appendAIMessage(async () => {
@@ -67,6 +77,7 @@ const handleQuestionClick = async (event) => {
 
     questionButton.dataset.question = question;
     questionButton.classList.add("hidden");
+    qcmButton.classList.add("hidden")
     submitButton.innerHTML = "Répondre à la question";
     return question;
   });
@@ -81,6 +92,10 @@ const handleQcmClick = async (event) => {
     });
     const result = await response.json();
     const qcm = result.answer;
+
+    questionButton.classList.add("hidden");
+    qcmButton.classList.add("hidden")
+    submitButton.innerHTML = "Réponse";
 
     qcmButton.dataset.qcm = qcm;
     return qcm;
