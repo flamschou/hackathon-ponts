@@ -68,3 +68,8 @@ def answerQCM():
         + " est celle de la bonne réponse à la question?"
     )
     return message
+
+
+@app.route("/Dark-mode")
+def dark_mode():
+    return "Le mode sombre a été activé."
