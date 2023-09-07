@@ -8,16 +8,17 @@
 </head>
 
 <body>
-	<main class="main-container">
+	<main class="main-container" id="main-container">
 		<header class="header">
 			<h1 class="header-title">Mon A.I.de mémoire</h1>
 		</header>
 
-		<section id="messages-container" class="messages-container">
+		<section class="messages-container" id="messages-container">
 			<div class="message message-ai">
 				Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
 				le cours et je te répondrai.
 			</div>
+
 		</section>
 
 		<form id="prompt-form" class="prompt-container">
@@ -33,14 +34,11 @@
 			<button type="button" class="button" id="qcm-button">
 				QCM
 			</button>
+			<button type="button" class="button" id="Dark-Mode"> Dark Mode</button>
 
-			<button type="button" class="button" id="Dark Mode">
-				QCM
-			</button>
+
 		</form>
 
 		<script src="{{ url_for('static', filename='prompt.js') }}"></script>
 	</main>
 </body>
-
-</html>

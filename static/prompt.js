@@ -3,6 +3,7 @@ const submitButton = document.getElementById("submit-button");
 const questionButton = document.getElementById("question-button");
 const qcmButton = document.getElementById("qcm-button");
 const messagesContainer = document.getElementById("messages-container");
+const DarkButton = document.getElementById("Dark-Mode");
 
 const appendHumanMessage = (message) => {
   const humanMessageElement = document.createElement("div");
@@ -87,3 +88,30 @@ const handleQcmClick = async (event) => {
 };
 
 qcmButton.addEventListener("click", handleQcmClick);
+
+function activerDarkMode() {
+  const root = document.documentElement;
+  root.style.setProperty('--main-background-color', 'black');
+  root.style.setProperty('--main-color', 'white');
+  root.style.setProperty('--secondary-color', '#3f3d3d');
+  root.style.setProperty('--border-color', 'white');
+  root.style.setProperty('--body-background-color', '#3f3d3d')
+
+  //const container = document.getElementById("main-container")
+  //container.style.setProperty('--main-color', 'white');
+  //container.style.setProperty('--main-background-color', 'dark');
+  // const human = document.getElementById("message-human");
+  // human.style.setProperty('background-color', 'red');
+  const human = document.getElementById("prompt");
+  human.style.setProperty('background-color', '#3f3d3d');
+
+
+}
+
+
+
+
+
+DarkButton.addEventListener("click", () => {
+  activerDarkMode();
+});

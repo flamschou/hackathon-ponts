@@ -51,3 +51,8 @@ def answer():
         "est-ce que ma reponse" + request.form["prompt"] + " est correcte?"
     )
     return message
+
+
+@app.route("/Dark-mode")
+def dark_mode():
+    return "Le mode sombre a été activé."
