@@ -19,7 +19,7 @@ def hello(name=None):
 @app.route("/prompt", methods=["POST"])
 def promt():
     message = {}
-    message["answer"] = gpt3_completion(request.form["prompt"])
+    message["answer"] = ask_question_to_pdf(request.form["prompt"])
     return message
 
 
@@ -28,6 +28,15 @@ def question():
     message = {}
     message["answer"] = ask_question_to_pdf(
         "Pose moi une question courte sur le cours."
+    )
+    return message
+
+
+@app.route("/qcm", methods=["GET"])
+def qcm():
+    message = {}
+    message["answer"] = ask_question_to_pdf(
+        "Construit un QCM de 10 questions sur le texte sur l'ENPC. Chaque question comportera 3 réponses fausses et une réponse vraie. Elles seront notées de A à D."
     )
     return message
 
