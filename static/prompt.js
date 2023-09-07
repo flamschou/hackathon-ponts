@@ -1,6 +1,7 @@
 const promptForm = document.getElementById("prompt-form");
 const submitButton = document.getElementById("submit-button");
 const questionButton = document.getElementById("question-button");
+const qcmButton = document.getElementById("qcm-button");
 const messagesContainer = document.getElementById("messages-container");
 
 const appendHumanMessage = (message) => {
@@ -71,3 +72,18 @@ const handleQuestionClick = async (event) => {
 };
 
 questionButton.addEventListener("click", handleQuestionClick);
+
+const handleQcmClick = async (event) => {
+  appendAIMessage(async () => {
+    const response = await fetch("/qcm", {
+      method: "GET",
+    });
+    const result = await response.json();
+    const qcm = result.answer;
+
+    qcmButton.dataset.qcm = qcm;
+    return qcm;
+  });
+};
+
+qcmButton.addEventListener("click", handleQcmClick);
