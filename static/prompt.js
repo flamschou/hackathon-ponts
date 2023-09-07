@@ -11,8 +11,6 @@ const appendHumanMessage = (message) => {
   messagesContainer.appendChild(humanMessageElement);
 };
 
-#test
-
 const appendAIMessage = async (messagePromise) => {
   // Add a loader to the interface
   const loaderElement = document.createElement("div");
@@ -41,16 +39,18 @@ const handlePrompt = async (event) => {
     data.append("question", questionButton.dataset.question);
     delete questionButton.dataset.question;
     questionButton.classList.remove("hidden");
+    qcmButton.classList.remove("hidden");
     submitButton.innerHTML = "Message";
   }
-
-  else if (qcmButton.dataset.qcm !== undefined) {
+  if (qcmButton.dataset.qcm !== undefined) {
     url = "/answerQCM";
     data.append("qcm", qcmButton.dataset.qcm);
     delete qcmButton.dataset.qcm;
     qcmButton.classList.remove("hidden");
+    questionButton.classList.remove("hidden");
     submitButton.innerHTML = "Message";
   }
+
 
   appendHumanMessage(data.get("prompt"));
 
