@@ -7,6 +7,7 @@ import sys
 
 from ask_question_to_pdf import *
 
+
 app = Flask(__name__)
 
 
@@ -36,7 +37,7 @@ def question():
 def qcm():
     message = {}
     message["answer"] = ask_question_to_pdf(
-        "Construit un QCM de 5 questions difficiles sur le texte. Chaque question comportera 3 réponses fausses et une réponse vraie. Elles seront notées de A à D. Il devra y avoir un saut de lignes après la question, et chaque réponse aura sa propre indentation."
+        "Pose un question difficile sur le texte. Tu proposeras quatre réponses numérotées de A à D, dont une seule sera correcte, les autres seront fausses."
     )
     return message
 
@@ -48,6 +49,22 @@ def qcm():
 def answer():
     message = {}
     message["answer"] = ask_question_to_pdf(
-        "est-ce que ma reponse" + request.form["prompt"] + " est correcte?"
+        "voici la question sur le texte :"
+        + request.form["question"]
+        + "est-ce que ma reponse"
+        + request.form["prompt"]
+        + " est correcte?"
+    )
+    return message
+
+
+@app.route("/answerQCM", methods=["POST"])
+def answerQCM():
+    message = {}
+    message["answer"] = ask_question_to_pdf(
+        request.form["qcm"]
+        + "est-ce que la lettre"
+        + request.form["prompt"]
+        + " est celle de la bonne réponse à la question?"
     )
     return message
