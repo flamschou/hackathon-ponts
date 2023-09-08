@@ -45,7 +45,7 @@ const handlePrompt = async (event) => {
     submitButton.innerHTML = "Message";
   }
 
-  else if (qcmButton.dataset.qcm !== undefined) {
+  if (qcmButton.dataset.qcm !== undefined) {
     url = "/answerQCM";
     data.append("qcm", qcmButton.dataset.qcm);
     delete qcmButton.dataset.qcm;
