@@ -32,9 +32,10 @@ def question():
 @app.route("/qcm", methods=["GET"])
 def qcm():
     message = {}
-    message["answer"] = ask_question_to_pdf(
-        "Pose un question difficile sur le texte. Tu proposeras UNIQUEMENT quatre réponses numérotées de A à D, dont une seule sera correcte, les autres seront fausses. Tu n'indiqueras pas la bonne réponses"
-    )
+    a = "Pose un question difficile sur le texte. Tu proposeras UNIQUEMENT"
+    b = " quatre réponses numérotées de A à D, dont une seule sera correcte, "
+    c = "les autres seront fausses. Tu n'indiqueras pas la bonne réponses"
+    message["answer"] = ask_question_to_pdf(a + b + c)
     return message
 
 
