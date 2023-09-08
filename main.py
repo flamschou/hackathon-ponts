@@ -37,7 +37,7 @@ def question():
 def qcm():
     message = {}
     message["answer"] = ask_question_to_pdf(
-        "Pose un question difficile sur le texte. Tu proposeras quatre réponses numérotées de A à D, dont une seule sera correcte, les autres seront fausses."
+        "Pose un question difficile sur le texte. Tu proposeras UNIQUEMENT quatre réponses numérotées de A à D, dont une seule sera correcte, les autres seront fausses. Tu n'indiqueras pas la bonne réponse"
     )
     return message
 
@@ -63,7 +63,7 @@ def answerQCM():
     message = {}
     message["answer"] = ask_question_to_pdf(
         request.form["qcm"]
-        + "est-ce que la lettre"
+        + "Au vu de ces informations, répond seulement Vrai ou Faux (si Faux, indique la bonne réponse) à cette question : est-ce que la lettre"
         + request.form["prompt"]
         + " est celle de la bonne réponse à la question?"
     )

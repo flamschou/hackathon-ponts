@@ -28,6 +28,12 @@ body {
   margin: 0 auto;
 }
 
+.button {
+  color: var(--main-color);
+
+
+}
+
 .header {
   text-align: center;
 }
@@ -76,6 +82,9 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 5px;
   padding: 5px;
+  background-color: var(--main-color);
+
+
 }
 
 .button {
