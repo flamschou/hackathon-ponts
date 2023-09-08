@@ -1,9 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import request
-
-
-from ask_question_to_pdf import *
+from ask_question_to_pdf import ask_question_to_pdf
 
 
 app = Flask(__name__)
