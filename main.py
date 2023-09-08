@@ -1,8 +1,6 @@
 from flask import Flask
 from flask import render_template
 from flask import request
-import openai
-import sys
 
 
 from ask_question_to_pdf import *
