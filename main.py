@@ -1,8 +1,6 @@
 from flask import Flask
 from flask import render_template
 from flask import request
-import openai
-import sys
 
 
 from ask_question_to_pdf import *
@@ -37,7 +35,7 @@ def question():
 def qcm():
     message = {}
     message["answer"] = ask_question_to_pdf(
-        "Pose un question difficile sur le texte. Tu proposeras UNIQUEMENT quatre réponses numérotées de A à D, dont une seule sera correcte, les autres seront fausses. Tu n'indiqueras pas la bonne réponse"
+        "Pose un question difficile sur le texte. Tu proposeras UNIQUEMENT quatre réponses numérotées de A à D, dont une seule sera correcte, les autres seront fausses. Tu n'indiqueras pas la bonne réponses"
     )
     return message
 
@@ -51,9 +49,9 @@ def answer():
     message["answer"] = ask_question_to_pdf(
         "voici la question sur le texte :"
         + request.form["question"]
-        + "est-ce que ma reponse"
+        + ". Est-ce que la reponse"
         + request.form["prompt"]
-        + " est correcte?"
+        + "correspond au document?"
     )
     return message
 
@@ -62,14 +60,10 @@ def answer():
 def answerQCM():
     message = {}
     message["answer"] = ask_question_to_pdf(
-        request.form["qcm"]
-        + "Au vu de ces informations, répond seulement Vrai ou Faux (si Faux, indique la bonne réponse) à cette question : est-ce que la lettre"
+        "voici la question sur le texte :"
+        + request.form["qcm"]
+        + "Répond seulement Vrai ou Faux (si Faux, indique la bonne réponse). Est-ce que la lettre"
         + request.form["prompt"]
         + " est celle de la bonne réponse à la question?"
     )
     return message
-
-
-@app.route("/Dark-mode")
-def dark_mode():
-    return "Le mode sombre a été activé."
