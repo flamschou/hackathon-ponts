@@ -61,7 +61,8 @@ def answerQCM():
     message["answer"] = ask_question_to_pdf(
         "voici la question sur le texte :"
         + request.form["qcm"]
-        + "Répond seulement Vrai ou Faux (si Faux, indique la bonne réponse). Est-ce que la lettre"
+        + "Répond seulement Vrai ou Faux (si Faux, "
+        + "indique la bonne réponse). Est-ce que la lettre"
         + request.form["prompt"]
         + " est celle de la bonne réponse à la question?"
     )
